@@ -38,11 +38,25 @@ class App extends Component {
     }
 
     render() {
+
+      // inline styling react component....
+      // SCOPED ONLY TO A SINGLE ELEMENT FOR THIS PARTICULAR COMPONENT
+      const style = {
+        backgroundColor: 'white',
+        font: 'inherit',
+        border: '1px solid blue',
+        padding: '8px',
+        cursor: 'pointer'
+      };
+
       return(
         <div className="App">
-          <h1>Does this work now?</h1>
-          <p>This is really working!</p>
-          <button onClick={()=>this.switchNameHandler('Sebby Lee!!!!')}>Switch Name</button>
+          <h1>My React App!!</h1>
+          <p>A practice run...</p>
+          <button 
+            onClick={()=>this.switchNameHandler('Sebby Lee!!!!')}
+            style={style}>Switch Name
+          </button>
           <Person 
             name={this.state.persons[0].name} 
             age={this.state.persons[0].age} />
