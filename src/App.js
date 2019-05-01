@@ -47,7 +47,6 @@ class App extends Component {
     }
 
     render() {
-
       // inline styling react component....
       // SCOPED ONLY TO A SINGLE ELEMENT FOR THIS PARTICULAR COMPONENT
       const style = {
@@ -58,6 +57,31 @@ class App extends Component {
         cursor: 'pointer'
       };
 
+      // Enter logic here... 
+
+      let persons = null;
+
+      if (this.state.showPersons) {
+        persons = (
+          <div>
+            <Person 
+              name={this.state.persons[0].name} 
+              age={this.state.persons[0].age} />
+            <Person 
+              name={this.state.persons[1].name} 
+              age={this.state.persons[1].age} 
+              click={this.switchNameHandler.bind(this, "!!!")}
+              changed={this.nameChangedHandler}
+              >
+              My Hobbies: Piano
+            </Person>
+            <Person 
+              name={this.state.persons[2].name} 
+              age={this.state.persons[2].age} />          
+          </div>          
+        )
+      }
+
       return(
         <div className="App">
           <h1>My React App!!</h1>
@@ -66,26 +90,7 @@ class App extends Component {
             onClick={this.togglePersonsHandler}
             style={style}>Toggle Persons
           </button>
-            {/* WRAP INNER DIV IN CURLY BRACES TO RENDER DYNAMICALLY --> add tenary operator */}
-          { 
-            this.state.showPersons ? 
-              <div>
-                <Person 
-                  name={this.state.persons[0].name} 
-                  age={this.state.persons[0].age} />
-                <Person 
-                  name={this.state.persons[1].name} 
-                  age={this.state.persons[1].age} 
-                  click={this.switchNameHandler.bind(this, "!!!")}
-                  changed={this.nameChangedHandler}
-                  >
-                  My Hobbies: Piano
-                </Person>
-                <Person 
-                  name={this.state.persons[2].name} 
-                  age={this.state.persons[2].age} />          
-              </div> : null
-          }
+          {persons}
         </div>
       )
         // return React.createElement('div', {className: 'App'}, React.createElement('h1', null, 'Does this work now?'))}
