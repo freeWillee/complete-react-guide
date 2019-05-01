@@ -89,10 +89,20 @@ class App extends Component {
         style.backgroundColor = 'red'
       }
 
+      let classes = [];
+      
+      if(this.state.persons.length <= 2) {
+        classes.push('red'); // classes = ['red']
+      }
+
+      if (this.state.persons.length <= 1) {
+        classes.push('bold'); // classes = ['red', 'bold']
+      }
+
       return(
         <div className="App">
           <h1>Blog Card</h1>
-          <p>Dynamically generated cards:</p>
+          <p className={classes.join(' ')}>Dynamically generated cards:</p>
           <button 
             onClick={this.togglePersonsHandler}
             style={style}>Toggle Persons
