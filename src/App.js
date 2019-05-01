@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
 import Person from './Person/Person';
-import Radium, { StyleRoot } from 'radium'
 
 
 class App extends Component {
@@ -131,4 +130,4 @@ class App extends Component {
     }
 }
 
-export default Radium(App);
+export default App;
