@@ -17,7 +17,7 @@ class App extends Component {
 
     deletePersonHandler = (personIndex) => {
       const persons = this.state.persons;
-      // this mutates original data (state) --> NO NO - DO NOT TOUCH THE ORIGINAL STATE!!
+      // DO NOT SPLICE this mutates original data (state) --> NO NO - DO NOT TOUCH THE ORIGINAL STATE!! MAKE A COPY OF THE ORIGINAL ARRAY / STATE INSTEAD
       persons.splice(personIndex, 1);
       this.setState({
         persons: persons
