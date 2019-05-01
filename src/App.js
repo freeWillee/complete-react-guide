@@ -11,7 +11,8 @@ class App extends Component {
         { name: 'Jim', age: 29 },
         { name: 'Steph', age: 25 }
       ],
-      otherState: 'some other value'
+      otherState: 'some other value',
+      showPersons: false
       };
 
     switchNameHandler = (newName) => {
@@ -37,6 +38,11 @@ class App extends Component {
       })
     }
 
+
+    togglePersonsHandler = () => {
+
+    }
+
     render() {
 
       // inline styling react component....
@@ -54,23 +60,28 @@ class App extends Component {
           <h1>My React App!!</h1>
           <p>A practice run...</p>
           <button 
-            onClick={()=>this.switchNameHandler('Sebby Lee!!!!')}
+            onClick={this.togglePersonsHandler}
             style={style}>Switch Name
           </button>
-          <Person 
-            name={this.state.persons[0].name} 
-            age={this.state.persons[0].age} />
-          <Person 
-            name={this.state.persons[1].name} 
-            age={this.state.persons[1].age} 
-            click={this.switchNameHandler.bind(this, "!!!")}
-            changed={this.nameChangedHandler}
-            >
-            My Hobbies: Piano
-          </Person>
-          <Person 
-            name={this.state.persons[2].name} 
-            age={this.state.persons[2].age} />
+            {/* WRAP INNER DIV IN CURLY BRACES TO RENDER DYNAMICALLY --> add tenary operator */}
+          { this.state.showPersons ? 
+              <div>
+                <Person 
+                  name={this.state.persons[0].name} 
+                  age={this.state.persons[0].age} />
+                <Person 
+                  name={this.state.persons[1].name} 
+                  age={this.state.persons[1].age} 
+                  click={this.switchNameHandler.bind(this, "!!!")}
+                  changed={this.nameChangedHandler}
+                  >
+                  My Hobbies: Piano
+                </Person>
+                <Person 
+                  name={this.state.persons[2].name} 
+                  age={this.state.persons[2].age} />          
+              </div> : null
+          }
         </div>
       )
         // return React.createElement('div', {className: 'App'}, React.createElement('h1', null, 'Does this work now?'))}
