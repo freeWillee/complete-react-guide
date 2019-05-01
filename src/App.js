@@ -59,7 +59,8 @@ class App extends Component {
       // inline styling react component....
       // SCOPED ONLY TO A SINGLE ELEMENT FOR THIS PARTICULAR COMPONENT
       const style = {
-        backgroundColor: 'white',
+        backgroundColor: 'green',
+        color: 'white',
         font: 'inherit',
         border: '1px solid blue',
         padding: '8px',
@@ -82,8 +83,10 @@ class App extends Component {
               changed={(event) => this.nameChangedHandler(event, person.id)}
               />
             })}
-          </div>          
-        )
+          </div>     
+        );
+        // After rendering cards, change background color of button to 'red'.
+        style.backgroundColor = 'red'
       }
 
       return(
