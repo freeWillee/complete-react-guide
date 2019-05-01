@@ -88,8 +88,8 @@ class App extends Component {
 
       return(
         <div className="App">
-          <h1>My React App!!</h1>
-          <p>A practice run...</p>
+          <h1>Blog Card</h1>
+          <p>Dynamically generated cards:</p>
           <button 
             onClick={this.togglePersonsHandler}
             style={style}>Toggle Persons
