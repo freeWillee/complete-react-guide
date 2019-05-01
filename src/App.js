@@ -40,7 +40,10 @@ class App extends Component {
 
 
     togglePersonsHandler = () => {
-
+      const doesShow = this.state.showPersons;
+      this.setState({
+        showPersons: !doesShow
+      })
     }
 
     render() {
@@ -61,10 +64,11 @@ class App extends Component {
           <p>A practice run...</p>
           <button 
             onClick={this.togglePersonsHandler}
-            style={style}>Switch Name
+            style={style}>Toggle Persons
           </button>
             {/* WRAP INNER DIV IN CURLY BRACES TO RENDER DYNAMICALLY --> add tenary operator */}
-          { this.state.showPersons ? 
+          { 
+            this.state.showPersons ? 
               <div>
                 <Person 
                   name={this.state.persons[0].name} 
