@@ -97,10 +97,6 @@ class App extends Component {
         );
         // After rendering cards, change background color of button to 'red'.
         style.backgroundColor = 'red'
-        style[':hover'] = {
-          backgroundColor: 'salmon',
-          color: 'black'
-        }
       }
 
       let classes = [];
@@ -114,7 +110,6 @@ class App extends Component {
       }
 
       return(
-        <StyleRoot>
           <div className="App">
             <h1>Blog Card</h1>
             <p className={classes.join(' ')}>Dynamically generated cards:</p>
@@ -124,7 +119,6 @@ class App extends Component {
             </button>
             {persons}
           </div>
-        </StyleRoot>
       )
         // return React.createElement('div', {className: 'App'}, React.createElement('h1', null, 'Does this work now?'))}
     }
