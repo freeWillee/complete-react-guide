@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import './App.css';
 import Person from './Person/Person';
+import Radium, { StyleRoot } from 'radium'
+
 
 class App extends Component {
   // state is native only when Component is extended.  only class-based react components
@@ -58,13 +60,22 @@ class App extends Component {
     render() {
       // inline styling react component....
       // SCOPED ONLY TO A SINGLE ELEMENT FOR THIS PARTICULAR COMPONENT
+      
+      // CAN YOU USE PSEUDO-SELECTORS?? MUST USE 3RD PARTY PACKAGE => RADIUM 
+      // we want to use 'hover' here..  import Radium above.
+      // All pseudo selectors are supported - must surround them with quotes (as strings)
+
       const style = {
         backgroundColor: 'green',
         color: 'white',
         font: 'inherit',
         border: '1px solid blue',
         padding: '8px',
-        cursor: 'pointer'
+        cursor: 'pointer',
+        ':hover': {
+          backgroundColor: 'lightgreen',
+          color: 'black'
+        }
       };
 
       // Enter logic here... 
@@ -87,6 +98,10 @@ class App extends Component {
         );
         // After rendering cards, change background color of button to 'red'.
         style.backgroundColor = 'red'
+        style[':hover'] = {
+          backgroundColor: 'salmon',
+          color: 'black'
+        }
       }
 
       let classes = [];
@@ -100,18 +115,20 @@ class App extends Component {
       }
 
       return(
-        <div className="App">
-          <h1>Blog Card</h1>
-          <p className={classes.join(' ')}>Dynamically generated cards:</p>
-          <button 
-            onClick={this.togglePersonsHandler}
-            style={style}>Toggle Persons
-          </button>
-          {persons}
-        </div>
+        <StyleRoot>
+          <div className="App">
+            <h1>Blog Card</h1>
+            <p className={classes.join(' ')}>Dynamically generated cards:</p>
+            <button 
+              onClick={this.togglePersonsHandler}
+              style={style}>Toggle Persons
+            </button>
+            {persons}
+          </div>
+        </StyleRoot>
       )
         // return React.createElement('div', {className: 'App'}, React.createElement('h1', null, 'Does this work now?'))}
     }
 }
 
-export default App;
+export default Radium(App);
