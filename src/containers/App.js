@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import classes from './App.module.css';
-import Person from './Person/Person';
+import Persons from '../components/Persons/Persons'
+import Cockpit from '../components/Cockpit/Cockpit'
 
 class App extends Component {
   // state is native only when Component is extended.  only class-based react components
@@ -58,45 +59,24 @@ class App extends Component {
     render() {
 
       let persons = null;
-      let btnClass = '';
 
       if (this.state.showPersons) {
         persons = (
-          <div>
-            {this.state.persons.map((person, index) => {
-              return
-                <Person 
-                  click={() => this.deletePersonHandler(index)}
-                  name={person.name} 
-                  age={person.age} 
-                  key={person.id}
-                  changed={(event) => this.nameChangedHandler(event, person.id)}
-                />
-            })}
-          </div>     
+          <Persons 
+            persons={this.state.persons}
+            clicked={this.deletePersonHandler}
+            changed={this.nameChangedHandler}/>  
         );
-        btnClass = classes.Red;
-      }
 
-      let appliedClasses = [];
-      
-      if(this.state.persons.length <= 2) {
-        appliedClasses.push(classes.red); // classes = ['red']
-      }
-
-      if (this.state.persons.length <= 1) {
-        appliedClasses.push(classes.bold); // classes = ['red', 'bold']
       }
 
       return(
           <div className={classes.App}>
-            <h1>Blog Card</h1>
-            <p className={appliedClasses.join(' ')}>Dynamically generated cards:</p>
-            <button 
-              className = {btnClass}
-              onClick={this.togglePersonsHandler}
-            >Toggle Persons
-            </button>
+            <Cockpit 
+              showPersons={this.state.showPersons}
+              persons={this.state.persons}
+              clicked={this.togglePersonsHandler}
+            />
             {persons}
           </div>
       )
