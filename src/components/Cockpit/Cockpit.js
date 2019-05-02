@@ -1,7 +1,10 @@
-import React from 'react'
+import React, { useEffect } from 'react' // allows for use of lifecycle methods in method components.
 import classes from './Cockpit.module.css'
 
-const cockpit = (props) => {
+const Cockpit = (props) => {
+    useEffect(()=>{
+        console.log('[Cockpit.js] useEffect')
+    });
 
     let appliedClasses = [];
     let btnClass = '';
@@ -30,4 +33,4 @@ const cockpit = (props) => {
     )
 }
 
-export default cockpit
+export default Cockpit

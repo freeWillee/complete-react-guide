@@ -32,6 +32,15 @@ class App extends Component {
     console.log('[App.js] componentDidMount');
   }
 
+  componentDidUpdate() {
+    console.log('[App.js] componentDidUpdate');
+  }
+
+  shouldComponentUpdate(nextProps, nextState) {
+    console.log('[App.js] shouldComponentUpdate');
+    return true;
+  }
+
   deletePersonHandler = (personIndex) => {
     // slice() copies the original full array. or use spread operator. This is the preferred approach.
     const persons = [...this.state.persons];
