@@ -8,12 +8,6 @@ import classes from './Person.module.css';
 // We don't need Component because we're not using the class feature that requires Component.
 
 const person = (props) => {
-
-    const rnd = Math.random();
-    if (rnd > 0.7) {
-        throw new Error('Something went wrong!')
-    }    
-    
     return (
 
         <div className={classes.Person}>
