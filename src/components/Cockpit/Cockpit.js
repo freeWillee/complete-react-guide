@@ -19,7 +19,7 @@ const cockpit = (props) => {
 
     return (
         <div className={classes.Cockpit}>
-            <h1>Blog Card</h1>
+            <h1>{props.title}</h1>
             <p className={appliedClasses.join(' ')}>Dynamically generated cards:</p>
             <button 
                 className = {btnClass}
