@@ -8,6 +8,7 @@ import classes from './Person.module.css';
 // We don't need Component because we're not using the class feature that requires Component.
 
 const person = (props) => {
+    console.log('[Person.js] rendering...')
     return (
 
         <div className={classes.Person}>
