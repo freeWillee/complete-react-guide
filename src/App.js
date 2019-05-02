@@ -57,29 +57,9 @@ class App extends Component {
     }
 
     render() {
-      // inline styling react component....
-      // SCOPED ONLY TO A SINGLE ELEMENT FOR THIS PARTICULAR COMPONENT
-      
-      // CAN YOU USE PSEUDO-SELECTORS?? MUST USE 3RD PARTY PACKAGE => RADIUM 
-      // we want to use 'hover' here..  import Radium above.
-      // All pseudo selectors are supported - must surround them with quotes (as strings)
-
-      const style = {
-        backgroundColor: 'green',
-        color: 'white',
-        font: 'inherit',
-        border: '1px solid blue',
-        padding: '8px',
-        cursor: 'pointer',
-        ':hover': {
-          backgroundColor: 'lightgreen',
-          color: 'black'
-        }
-      };
-
-      // Enter logic here... 
 
       let persons = null;
+      let btnClass = '';
 
       if (this.state.showPersons) {
         persons = (
@@ -95,8 +75,7 @@ class App extends Component {
             })}
           </div>     
         );
-        // After rendering cards, change background color of button to 'red'.
-        style.backgroundColor = 'red'
+        btnClass = classes.Red;
       }
 
       let appliedClasses = [];
@@ -114,8 +93,9 @@ class App extends Component {
             <h1>Blog Card</h1>
             <p className={appliedClasses.join(' ')}>Dynamically generated cards:</p>
             <button 
+              className = {btnClass}
               onClick={this.togglePersonsHandler}
-              style={style}>Toggle Persons
+            >Toggle Persons
             </button>
             {persons}
           </div>
