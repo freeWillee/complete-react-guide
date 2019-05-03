@@ -4,8 +4,9 @@
 
 import React, {Component} from 'react';
 import Aux from '../../../hoc/Aux'
-
+import withClass from '../../../hoc/withClass'
 import classes from './Person.module.css';
+
 // We don't need Component because we're not using the class feature that requires Component.
 
 class Person extends Component {
@@ -29,4 +30,4 @@ class Person extends Component {
     
 }
 
-export default Person
+export default withClass(Person, classes.Person)
