@@ -1,9 +1,12 @@
-import React, { useEffect, useRef } from 'react' // allows for use of lifecycle methods in method components.
+import React, { useEffect, useRef, useContext } from 'react' // allows for use of lifecycle methods in method components.
 import classes from './Cockpit.module.css'
 import AuthContext from '../../context/auth-context';
 
 const Cockpit = (props) => {
     const toggleBtnRef = useRef(null);
+    const authContext = useContext(AuthContext);
+
+    console.log('use contextAuth: ', authContext.authenticated)
 
     useEffect(()=>{
         console.log('[Cockpit.js] useEffect')
@@ -51,9 +54,7 @@ const Cockpit = (props) => {
                 onClick={props.clicked}
             >Toggle Persons
             </button>
-            <AuthContext.Consumer>
-                {(context) => <button onClick={context.login}>Log in</button>}    
-            </AuthContext.Consumer>
+                {<button onClick={authContext.login}>Log in</button>}    
         </div>
     )
 }
